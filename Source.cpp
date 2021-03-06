@@ -10,6 +10,7 @@
 #include <fstream>
 
 
+
 namespace fs = std::filesystem;
 using namespace std;
 
@@ -77,7 +78,11 @@ int main() {
         }
         if (Answer == "dir") {
             
-            fs::path p("C:\\Users\\jon22\\Downloads");
+            Answer == "";
+            cin >> Answer;
+            
+         
+            fs::path p(Answer);
             for (auto i = std::filesystem::directory_iterator::directory_iterator(p); i != std::filesystem::directory_iterator::directory_iterator(); i++)
             {
                 if (!is_directory(i->path())) //we eliminate directories
@@ -87,8 +92,10 @@ int main() {
                 else
                     continue;
             }
+         
            
         }
     }
     return 0;
 }
+
