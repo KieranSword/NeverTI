@@ -8,8 +8,6 @@
 #include <chrono>
 #include <ctime>
 #include <fstream>
-#include "Source1.cpp"
-#include "Header.h"
 
 
 namespace fs = std::filesystem;
