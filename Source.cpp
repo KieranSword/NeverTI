@@ -8,39 +8,34 @@
 #include <chrono>
 #include <ctime>
 #include <fstream>
-#include <conio.h>
 #include <iostream>
-#include <conio.h>
 #include <windows.h>
 #include <ctime>
 #include <vector>
-#pragma warning(disable:4996)
-using namespace std::filesystem;
 
-using namespace std;
-
+    std::string Answer = "";
+    std::string port = "";
+    std::string currentdir = getenv("USERPROFILE");
+    std::string contents = "";
+    bool calcopen = false;
 
 int main(){
-    cout << "====Never OS====" << endl;
-    string Answer = "";
-    string port = "";
-    string currentdir = getenv("USERPROFILE");
-    string contents = "";
-    bool calcopen = false;
+    std::cout << "====Never OS====\n";
+
     system(("cd " + currentdir).c_str());
 
 
     while (true) {
         Sleep(100);
-        cin >> Answer;
+        std::cin >> Answer;
        
         if (Answer == "new") {
-            cout << "What name/path?";
-            cin >> Answer;
-            cout << "What Contents?";
-            cin >> contents;
+            std::cout << "What name/path?\n";
+            std::cin >> Answer;
+            std::cout << "What Contents?\n";
+            std::cin >> contents;
             // Create and open a text file
-            ofstream MyFile(Answer);
+            std::ofstream MyFile(Answer);
 
             // Write to the file
             MyFile << contents;
@@ -56,16 +51,16 @@ int main(){
         }
 
         if (Answer == "calc") {
-            cout << "Please enter the first number: ";
+            std::cout << "Please enter the first number: ";
             calcopen = true;
             double n1 = 0;
-            cin >> n1;
-            cout << "Please enter an operator (+, -, *, /): ";
+            std::cin >> n1;
+            std::cout << "Please enter an operator (+, -, *, /): ";
             char op = '0';
-            cin >> op;
-            cout << "Please enter a second number: ";
+            std::cin >> op;
+            std::cout << "Please enter a second number: ";
             double n2 = 0;
-            cin >> n2;
+            std::cin >> n2;
             double answer = 0;
             switch (op) {
             case '+':
@@ -87,17 +82,17 @@ int main(){
                 calcopen = false;
                 break;
             }
-            cout << "Thanks for using my calculator your answer is: " << answer << endl;
+            std::cout << "Thanks for using my calculator your answer is: " << answer << "\n";
             Answer = "";
         }
         if (Answer == "cls") {
             system("cls");
-            cout << "====Never OS====" << endl;
+            std::cout << "====Never OS====" << "\n";
            
         }
         if (Answer == "help") {
-            cout << "Commands:help,exit,dir,open,cls" << endl;
-            cout << "Programs:calc,time,web,python,cmd,bash" << endl;
+            std::cout << "Commands:help,exit,dir,open,cls" << "\n";
+            std::cout << "Programs:calc,time,web,python,cmd,bash" << "\n";
             Answer = "";
         }
         if (Answer == "bash") {
@@ -107,10 +102,10 @@ int main(){
             system("cmd");
         }
         if(Answer == "web") {
-            cout << "What Address?\n";
-            cin >> Answer;
-            cout << "What Port? Default is 23!\n";
-            cin >> port;
+            std::cout << "What Address?\n";
+            std::cin >> Answer;
+            std::cout << "What Port? Default is 23!\n";
+            std::cin >> port;
        
             system(std::string("telnet.exe " + Answer + " " + port).c_str());
             
@@ -131,9 +126,9 @@ int main(){
          
         }
         if (Answer == "open") {
-            ifstream myReadFile;
+            std::ifstream myReadFile;
             Answer == "";
-            cin >> Answer;
+            std::cin >> Answer;
             myReadFile.open(Answer);
             char output[100];
             if (myReadFile.is_open()) {
@@ -141,7 +136,7 @@ int main(){
 
 
                     myReadFile >> output;
-                    cout << output << endl;
+                    std::cout << output << "\n";
 
 
                 }
@@ -152,8 +147,8 @@ int main(){
             system("py");
         }
         if (Answer == "dir") {
-            cin >> Answer; 
-            cout << "Where? and do currentdir for the current directory!\n";
+            std::cin >> Answer; 
+            std::cout << "Where? and do currentdir for the current directory!\n";
             if (Answer != "currentdir") {
                 system(("dir " + Answer).c_str());
             }
